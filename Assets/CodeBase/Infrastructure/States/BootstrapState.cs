@@ -1,7 +1,10 @@
-﻿using CodeBase.Services.Input;
+﻿using CodeBase.Infrastructure.AssetManagement;
+using CodeBase.Infrastructure.Factory;
+using CodeBase.Infrastructure.Services;
+using CodeBase.Services.Input;
 using UnityEngine;
 
-namespace CodeBase.Infrastructure
+namespace CodeBase.Infrastructure.States
 {
 	public class BootstrapState : IState
 	{
@@ -24,6 +27,8 @@ namespace CodeBase.Infrastructure
 		private void RegisterServices()
 		{
 			Game.InputService = RegisterInputService();
+
+			AllServices.Container.RegisterSingle<IGameFactory>(new GameFactory(AllServices.Container.Single<IAssets>));
 		}
 		public void Exit()
 		{
