@@ -4,7 +4,7 @@ using UnityEngine;
 namespace CodeBase.Infrastructure.AssetManagement
 {
 
-	public class AssetProvider : IAssets, IService
+	public class AssetProvider : IAssets
 	{
 
 		public GameObject Instantiate(string path)
