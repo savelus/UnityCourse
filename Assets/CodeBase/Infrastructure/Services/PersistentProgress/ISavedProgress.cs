@@ -2,12 +2,12 @@
 
 namespace CodeBase.Infrastructure.Services.PersistentProgress
 {
-    public interface ISaveProgressReader
+    public interface ISavedProgressReader
     {
         void LoadProgress(PlayerProgress progress);
     }
 
-    public interface ISaveProgress : ISaveProgressReader
+    public interface ISavedProgress : ISavedProgressReader
     {
         void UpdateProgress(PlayerProgress progress);
     }

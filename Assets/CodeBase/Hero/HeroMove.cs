@@ -10,37 +10,40 @@ using UnityEngine.SceneManagement;
 
 namespace CodeBase.Hero
 {
-    public class HeroMove : MonoBehaviour, ISaveProgress
+    [RequireComponent(typeof(CharacterController))]
+    public class HeroMove : MonoBehaviour, ISavedProgress
     {
+        public float MovementSpeed = 10f;
+        
         private CharacterController _characterController;
-        public float MovementSpeed;
         private IInputService _inputService;
+        private HeroAnimator _heroAnimator;
+
 
         private void Awake()
         {
             _inputService = AllServices.Container.Single<IInputService>();
+
+            _characterController = GetComponent<CharacterController>();
+            _heroAnimator = GetComponent<HeroAnimator>();
         }
         private void Update()
         {
             Vector3 movementVector = Vector3.zero;
 
-            if(_inputService.Axis.sqrMagnitude > Constants.Epsilon)
+            if(!_heroAnimator.IsAttacking && _inputService.Axis.sqrMagnitude > Constants.Epsilon)
             {
                 movementVector = Camera.main.transform.TransformDirection(_inputService.Axis);
                 movementVector.y = 0;
                 movementVector.Normalize();
-
                 transform.forward = movementVector;
             }
-            movementVector += Physics.gravity;
             
+            movementVector += Physics.gravity;
             _characterController.Move( MovementSpeed * movementVector * Time.deltaTime);
         }
         public void UpdateProgress(PlayerProgress progress) =>
             progress.WorldData.PositionOnLevel = new PositionOnLevel(CurrentLevel(), transform.position.AsVectorData());
-
-        private static string CurrentLevel() => 
-            SceneManager.GetActiveScene().name;
 
         public void LoadProgress(PlayerProgress progress)
         {
@@ -55,8 +58,11 @@ namespace CodeBase.Hero
         private void Warp(Vector3Data to)
         {
             _characterController.enabled = false;           
-            transform.position = to.AsUnityVector();
+            transform.position = to.AsUnityVector().AddY(_characterController.height);
             _characterController.enabled = true;           
         }
+
+        private static string CurrentLevel() => 
+            SceneManager.GetActiveScene().name;
     }
 }
