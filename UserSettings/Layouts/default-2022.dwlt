@@ -340,6 +340,7 @@ MonoBehaviour:
     m_KeySerializationHelper:
     - {fileID: 110700000, guid: 483be6d2a23672442b51a01e45b2045d, type: 2}
     - {fileID: 1102213467112807186, guid: 483be6d2a23672442b51a01e45b2045d, type: 2}
+    - {fileID: 110721572, guid: d7b901a1a6e063e41aaf17f97809a1ec, type: 2}
     m_ValueSerializationHelper:
     - e00: 0.6769968
       e01: 0
@@ -373,11 +374,27 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
+    - e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 483be6d2a23672442b51a01e45b2045d,
+  m_AnimatorController: {fileID: 9100000, guid: d7b901a1a6e063e41aaf17f97809a1ec,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 110700000, guid: 483be6d2a23672442b51a01e45b2045d, type: 2}
+  - m_Target: {fileID: 110721572, guid: d7b901a1a6e063e41aaf17f97809a1ec, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -432,22 +449,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Resources/Enemies/Lich/Prefabs
+    - Assets/Resources/Hero
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Resources/Enemies/Lich/Prefabs
+  - Assets/Resources/Hero
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\new\Unity\UnityCourse
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 86}
-    m_SelectedIDs: e67f0000
-    m_LastClickedID: 32742
-    m_ExpandedIDs: 000000004a7400004c7400004e7400005074000052740000407d00004e7d0000dc7f000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 118}
+    m_SelectedIDs: b27d0000
+    m_LastClickedID: 32178
+    m_ExpandedIDs: 00000000c4740000c6740000c8740000ca740000cc740000b07d0000d67d000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -475,7 +492,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000004a7400004c7400004e7400005074000052740000
+    m_ExpandedIDs: 00000000c4740000c6740000c8740000ca740000cc740000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -567,7 +584,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 88
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -607,7 +624,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: e0c1ffff94d2000096d200009cd200009ed20000a0d20000a4d20000a6d20000a8d20000aad20000acd20000b2d20000b8d20000bad20000bcd20000bed20000
+      m_ExpandedIDs: 5e8dffffc6b10100c8b10100cab10100ccb10100ceb10100d0b10100d2b10100d6b10100dab10100e0b10100e4b10100e6b10100eab10100ecb10100eeb10100f2b10100f4b10100f8b10100fab10100fcb1010000b2010004b2010006b201000ab201000cb201000eb2010010b2010012b2010014b2010016b2010018b201001ab201001cb201001eb2010022b2010024b20100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -709,8 +726,8 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffset: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar
       index: 0
@@ -912,9 +929,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.011359811, y: 0.659857, z: 0.18484801}
+    m_Target: {x: 0.5520564, y: -0.960335, z: 0.65138066}
     speed: 2
-    m_Value: {x: -0.011359811, y: 0.659857, z: 0.18484801}
+    m_Value: {x: 0.5520564, y: -0.960335, z: 0.65138066}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -960,13 +977,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.07282894, y: 0.8790806, z: -0.1425956, w: -0.44897786}
+    m_Target: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
     speed: 2
-    m_Value: {x: -0.07282889, y: 0.87907994, z: -0.1425955, w: -0.44897753}
+    m_Value: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
   m_Size:
-    m_Target: 1.2903473
+    m_Target: 1.4514594
     speed: 2
-    m_Value: 1.2903473
+    m_Value: 1.4514594
   m_Ortho:
     m_Target: 0
     speed: 2
