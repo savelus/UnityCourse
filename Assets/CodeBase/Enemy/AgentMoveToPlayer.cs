@@ -30,9 +30,9 @@ namespace CodeBase.Enemy
 		
 		private void InitializeHeroTransform() =>
 			_heroTransform = _gameFactory.HeroGameObject.transform;
-		
+
 		private bool Initialized() =>
-			_heroTransform!=null;
+			_heroTransform != null;
 
 		private void HeroCreated() =>
 			InitializeHeroTransform();
