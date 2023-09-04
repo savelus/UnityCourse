@@ -13,7 +13,7 @@ namespace CodeBase.Infrastructure.Factory
 		List<ISavedProgress> ProgressWriters { get; }
 		event Action HeroCreated;
 		GameObject HeroGameObject { get; }
-		void CreateHUD();
+		GameObject CreateHUD();
 		void Clenup();
 	}
 }
