@@ -402,6 +402,8 @@ GameObject:
   - component: {fileID: 5198906321589397546}
   - component: {fileID: 3860678416759212018}
   - component: {fileID: 975025906909304459}
+  - component: {fileID: 8854269676602696720}
+  - component: {fileID: 1870054536687865143}
   m_Layer: 0
   m_Name: FreeLichPBR
   m_TagString: Untagged
@@ -425,6 +427,7 @@ Transform:
   - {fileID: 4185802441536265380}
   - {fileID: 4523268626435018}
   - {fileID: 4256255772079902}
+  - {fileID: 9025983668610386104}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -540,6 +543,7 @@ MonoBehaviour:
   AttackCooldown: 3
   Cleavage: 0.5
   EffectiveDistance: 0.5
+  Damage: 10
 --- !u!114 &975025906909304459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,6 +558,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attack: {fileID: 3860678416759212018}
   TriggerObserver: {fileID: 4687136421582129012}
+--- !u!114 &8854269676602696720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500939411536426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bf230e6af0341d3a128d0382326f2bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 3688046251690756579}
+  _current: 4
+  _max: 4
+--- !u!114 &1870054536687865143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500939411536426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 492a3c7368e643658a186280eff05105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: {fileID: 8854269676602696720}
+  Animator: {fileID: 3688046251690756579}
+  DeathFx: {fileID: 100004, guid: 5911fac36a205024aa761a8677d86e92, type: 3}
 --- !u!1 &1537370055453520
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,6 +1071,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548baa94bd084ceb95fd9419a0297cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6871901053540107697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9025983668610386104}
+  - component: {fileID: 4582703070688870433}
+  m_Layer: 15
+  m_Name: HeartBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9025983668610386104
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6871901053540107697}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4665124114459090}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4582703070688870433
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6871901053540107697}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 2, z: 1.5}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &7173882573725403346
 GameObject:
   m_ObjectHideFlags: 0
