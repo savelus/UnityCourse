@@ -34,7 +34,7 @@ namespace CodeBase.Infrastructure.Factory
 			return InstantiateRegistered(AssetPath.HudPath);
 		}
 
-		public void Clenup()
+		public void Cleanup()
 		{
 			ProgressReaders.Clear();
 			ProgressWriters.Clear();
@@ -54,7 +54,7 @@ namespace CodeBase.Infrastructure.Factory
 			return gameObject;
 		}
 
-		private void Register(ISavedProgressReader progressReader)
+		public void Register(ISavedProgressReader progressReader)
 		{
 			if(progressReader is ISavedProgress progressWriter)
 				ProgressWriters.Add(progressWriter);
