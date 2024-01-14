@@ -50,8 +50,9 @@ namespace CodeBase.Hero
             if (CurrentLevel() == progress.WorldData.PositionOnLevel.Level)
             {
                 var savedPosition = progress.WorldData.PositionOnLevel.Position;
-                if (savedPosition != null) 
+                if (savedPosition != null) {
                     Warp(to: savedPosition);
+                }
             }
         }
 
