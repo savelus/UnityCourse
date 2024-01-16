@@ -9,6 +9,9 @@ namespace CodeBase.StaticData {
         public int Hp;
         [Range(1f, 30f)]
         public float Damage;
+
+        public int MaxLoot;
+        public int MinLoot;
         
         [Range(1f, 30f)]
         public float MoveSpeed;

@@ -3,6 +3,7 @@ using CodeBase.Enemy;
 using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.Services.PersistentProgress;
+using CodeBase.Infrastructure.Services.RandomService;
 using CodeBase.Logic;
 using CodeBase.Services;
 using CodeBase.StaticData;
@@ -17,16 +18,23 @@ namespace CodeBase.Infrastructure.Factory
 	public class GameFactory : IGameFactory
 	{
 		private readonly IAssets _assets;
+		private readonly IRandomService _randomService;
 		private readonly IStaticDataService _staticData;
+		private readonly IPersistentProgressService _progressService;
 
 		public List<ISavedProgressReader> ProgressReaders { get; } = new();
 		public List<ISavedProgress> ProgressWriters { get; } = new();
 		
 		private GameObject HeroGameObject { get; set; }
 
-		public GameFactory(IAssets assets, IStaticDataService staticData) {
+		public GameFactory(IAssets assets, 
+						   IStaticDataService staticData, 
+						   IRandomService randomService,
+						   IPersistentProgressService progressService) {
 			_assets = assets;
 			_staticData = staticData;
+			_randomService = randomService;
+			_progressService = progressService;
 		}
 		public GameObject CreateHero(GameObject at)
 		{
@@ -58,8 +66,18 @@ namespace CodeBase.Infrastructure.Factory
 			attack.EffectiveDistance = monsterData.EffectiveDistance;
 			
 			monster.GetComponent<AgentRotateToPlayer>()?.Construct(HeroGameObject.transform);
-			
+			var lootSpawner = monster.GetComponentInChildren<LootSpawner>();
+			lootSpawner.SetLoot(monsterData.MinLoot, monsterData.MaxLoot);
+			lootSpawner.Construct(this, _randomService);
+
 			return monster;
+		}
+
+		public LootPiece CreateLoot() {
+			var lootPiece = InstantiateRegistered(AssetPath.Loot).GetComponent<LootPiece>();
+			lootPiece.Construct(_progressService.Progress.WorldData);
+			
+			return lootPiece;
 		}
 
 		public void Cleanup()
