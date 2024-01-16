@@ -6,7 +6,7 @@ using UnityEngine;
 namespace CodeBase.StaticData {
     public class StaticDataService : IStaticDataService {
         private Dictionary<MonsterTypeId, MonsterStaticData> _monsters;
-
+        
         public void LoadMonsters() {
             _monsters = Resources
                 .LoadAll<MonsterStaticData>("StaticData/Monsters")
