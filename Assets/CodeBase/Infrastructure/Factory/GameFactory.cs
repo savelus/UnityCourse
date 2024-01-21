@@ -5,6 +5,7 @@ using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.Services.PersistentProgress;
 using CodeBase.Infrastructure.Services.RandomService;
 using CodeBase.Logic;
+using CodeBase.Logic.EnemySpawners;
 using CodeBase.Services;
 using CodeBase.StaticData;
 using CodeBase.UI;
@@ -79,6 +80,16 @@ namespace CodeBase.Infrastructure.Factory
 			lootPiece.Construct(_progressService.Progress.WorldData);
 			
 			return lootPiece;
+		}
+
+		public void CreateSpawner(Vector3 at, string spawnerId, MonsterTypeId monsterTypeId) {
+			var spawner = InstantiateRegistered(AssetPath.Spawner, at)
+				.GetComponent<SpawnPoint>();
+
+			spawner.Construct(this);
+			spawner.Id = spawnerId;
+			spawner.MonsterTypeId = monsterTypeId;
+			
 		}
 
 		public void Cleanup()
