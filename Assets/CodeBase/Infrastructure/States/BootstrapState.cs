@@ -8,6 +8,8 @@ using CodeBase.Infrastructure.Services.SaveLoad;
 using CodeBase.Services;
 using CodeBase.Services.Input;
 using CodeBase.StaticData;
+using CodeBase.UI.Services.Factory;
+using CodeBase.UI.Services.Windows;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.States
@@ -37,21 +39,29 @@ namespace CodeBase.Infrastructure.States
 		{
 			IStaticDataService staticDataService = RegisterStaticData();
 			IRandomService randomService = new UnityRandomService();
+			IInputService inputService = InputService();
 			IAssets assets = new AssetProvider();
 			IPersistentProgressService persistentProgressService = new PersistentProgressService();
+			IUIFactory uiFactory = new UIFactory(assets, staticDataService);
+			IWindowService windowService = new WindowService(uiFactory);
+			IGameFactory gameFactory = new GameFactory(assets, 
+													  staticDataService, 
+													  randomService, 
+													  persistentProgressService,
+													  windowService);
+			ISaveLoadService saveLoadService = new SaveLoadService(persistentProgressService, gameFactory);
 			
 			_services.RegisterSingle(randomService);
-			_services.RegisterSingle(InputService());
+			_services.RegisterSingle(inputService);
 			_services.RegisterSingle(assets);
 			_services.RegisterSingle(persistentProgressService);
-			_services.RegisterSingle<IGameFactory>(new GameFactory(assets, staticDataService, randomService, persistentProgressService));
-			_services.RegisterSingle<ISaveLoadService>(new SaveLoadService(persistentProgressService, 
-																			 _services.Single<IGameFactory>()));
-		}
-
-		private void RegisterRandomService() {
+			_services.RegisterSingle(uiFactory);
+			_services.RegisterSingle(windowService);
+			_services.RegisterSingle(gameFactory);
+			_services.RegisterSingle(saveLoadService);
 			
 		}
+
 
 		private IStaticDataService RegisterStaticData() {
 			IStaticDataService staticData = new StaticDataService();
@@ -66,12 +76,9 @@ namespace CodeBase.Infrastructure.States
 		{
 
 		}
-		private static IInputService InputService()
-		{
-			if (Application.isEditor)
-				return new StandaloneInputService();
-			else
-				return new MobileInputService();
+		private static IInputService InputService() {
+			if (Application.isEditor) return new StandaloneInputService();
+			return new MobileInputService();
 		}
 
 	}
