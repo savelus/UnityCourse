@@ -42,7 +42,7 @@ namespace CodeBase.Infrastructure.States
 			IInputService inputService = InputService();
 			IAssets assets = new AssetProvider();
 			IPersistentProgressService persistentProgressService = new PersistentProgressService();
-			IUIFactory uiFactory = new UIFactory(assets, staticDataService);
+			IUIFactory uiFactory = new UIFactory(assets, staticDataService, persistentProgressService);
 			IWindowService windowService = new WindowService(uiFactory);
 			IGameFactory gameFactory = new GameFactory(assets, 
 													  staticDataService, 
